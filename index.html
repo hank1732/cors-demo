@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>CORS DEMO</title>
+  <script src="//cdn.bootcss.com/jquery/3.1.1/jquery.min.js"></script>
+  <link href="//cdn.bootcss.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet">
+  <script src="//cdn.bootcss.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
+  <style>
+  ul {
+    list-style: none;
+  }
+  
+  li {
+    float: left;
+    position: relative;
+    margin: 0 30px 20px 0;
+  }
+  
+  .badge {
+    background: #5cb85c;
+    position: absolute;
+    top: -10px;
+    right: -25px;
+  }
+  </style>
+</head>
+
+<body>
+  <header>
+    <h1>CORS DEMO</h1></header>
+  <section class="main-body">
+    <section class="config">
+      <div class="key">URL</div>
+      <ul class="value-list clearfix">
+        <li>
+          <button type="button" class="btn btn-default">模拟本地（localhost:8000）</button>
+        </li>
+        <li>
+          <button type="button" class="btn btn-default">模拟跨域远端（localhost:8001）</button>
+        </li>
+      </ul>
+      <div class="key">Method</div>
+      <ul class="value-list clearfix">
+        <li>
+          <button type="button" class="btn btn-default">GET</button><span class="badge badge-success">Simple</span></li>
+        <li>
+          <button type="button" class="btn btn-default">POST</button><span class="badge badge-success">Simple</span></li>
+        <li>
+          <button type="button" class="btn btn-default">HEAD</button><span class="badge badge-success">Simple</span></li>
+        <li>
+          <button type="button" class="btn btn-default">TRACE</button>
+        </li>
+        <li>
+          <button type="button" class="btn btn-default">PUT</button>
+        </li>
+        <li>
+          <button type="button" class="btn btn-default">DELETE</button>
+        </li>
+        <li>
+          <button type="button" class="btn btn-default">OPTIONS</button>
+        </li>
+        <li>
+          <button type="button" class="btn btn-default">CONNECT</button>
+        </li>
+      </ul>
+      <div class="key">Content-Type</div>
+      <ul class="value-list clearfix">
+        <li>
+          <button type="button" class="btn btn-default">text/plain</button><span class="badge badge-success">Simple</span></li>
+        <li>
+          <button type="button" class="btn btn-default">application/x-www-form-urlencoded</button><span class="badge badge-success">Simple</span></li>
+        <li>
+          <button type="button" class="btn btn-default">multipart/form-data</button><span class="badge badge-success">Simple</span></li>
+        <li>
+          <button type="button" class="btn btn-default">text/html</button>
+        </li>
+        <li>
+          <button type="button" class="btn btn-default">text/xml</button>
+        </li>
+        <li>
+          <button type="button" class="btn btn-default">image/gif</button>
+        </li>
+        <li>
+          <button type="button" class="btn btn-default">image/jpeg</button>
+        </li>
+        <li>
+          <button type="button" class="btn btn-default">application/xhtml+xml</button>
+        </li>
+        <li>
+          <button type="button" class="btn btn-default">application/xml</button>
+        </li>
+        <li>
+          <button type="button" class="btn btn-default">application/atom+xml</button>
+        </li>
+        <li>
+          <button type="button" class="btn btn-default">application/json</button>
+        </li>
+        <li>
+          <button type="button" class="btn btn-default">application/pdf</button>
+        </li>
+        <li>
+          <button type="button" class="btn btn-default">application/msword</button>
+        </li>
+        <li>
+          <button type="button" class="btn btn-default">application/octet-stream</button>
+        </li>
+      </ul>
+    </section>
+    <section class="demo"></section>
+  </section>
+  <script>
+  $(function sendSameOriginRequest(argument) {
+    sendRequestToRemote()
+      .then(function(res) {
+        showRespones(res);
+      })
+  });
+
+  function sendRequestToRemote() {
+    return $.ajax({
+      method: "GET",
+      url: 'http://localhost:8001/api-cors',
+      contentType: 'application/xml; charset=UTF-8',
+      headers: {
+        hank: 'hank'
+      }
+    })
+  }
+
+  function showRespones(res) {
+  	console.log(res);
+  }
+  </script>
+</body>
+
+</html>
