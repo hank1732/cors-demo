@@ -46,16 +46,16 @@ remoteServer.all('/api-cors-header', function(req, res) {
 remoteServer.all('/api-cors-custom-header', function(req, res) {
   res.setHeader('Access-Control-Allow-Origin','*');
   res.setHeader('Access-Control-Allow-Methods','GET,POST,HEAD,TRACE,PUT,DELETE,OPTIONS,CONNECT');
-  res.setHeader('Access-Control-Allow-Headers','content-type,hank');
+  res.setHeader('Access-Control-Allow-Headers','content-type,Hankonline');
   sendHeader(req, res);
 });
 
 function sendHeader(req ,res) {
-  var text = 'Request Header<br>';
+  var text = '';
   for (var p in req.headers) {
-    text += p + ' === ' + req.headers[p];
+    text += p + '== ' + req.headers[p];
     text += '<br>'
-    console.log(p, ' === ', req.headers[p]);
+    console.log(p, '== ', req.headers[p]);
   }
   // text += 'Response Header<br>';
   // text += res;

@@ -8,14 +8,27 @@
   <link href="//cdn.bootcss.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet">
   <script src="//cdn.bootcss.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
   <style>
+  body {
+    width: 1024px;
+    margin: 0 auto;
+  }
+  
   ul {
     list-style: none;
+    margin: 0;
   }
   
   li {
     float: left;
     position: relative;
-    margin: 0 30px 20px 0;
+    margin: 0 30px 15px 0;
+  }
+  
+  h1,
+  h2,
+  h3,
+  h4 {
+    margin: 0;
   }
   
   .badge {
@@ -24,113 +37,241 @@
     top: -10px;
     right: -25px;
   }
+  
+  .page-header {
+    margin: 0 0 10px 0;
+    padding: 10px 10px;
+    color: #2b669a;
+  }
+  
+  .config {
+    position: relative;
+  }
+  
+  .key {
+    margin-bottom: 10px;
+  }
+  
+  .action {
+    position: absolute;
+    bottom: 10px;
+    right: 30px;
+  }
+  
+  .action .btn {
+    width: 150px;
+  }
+  
+  .demo {
+    border-top: 1px solid #eee;
+    padding-top: 15px;
+  }
+  
+  .data-show-wrap {
+    width: 900px;
+    margin: 0 auto;
+  }
+  
+  .data-show {
+    float: left;
+    width: 400px;
+    min-height: 300px;
+    margin-right: 40px;
+    border: solid 1px;
+    text-align: center;
+  }
+  
+  .data-show p {
+    text-align: left;
+    padding: 15px;
+    padding-top: 0;
+    margin: 0;
+  }
   </style>
 </head>
 
 <body>
-  <header>
+  <header class="page-header">
     <h1>CORS DEMO</h1></header>
   <section class="main-body">
     <section class="config">
-      <div class="key">URL</div>
-      <ul class="value-list clearfix">
+      <div class="key">
+        <h4>URL</h4></div>
+      <ul class="value-list clearfix j_url">
         <li>
-          <button type="button" class="btn btn-default">模拟本地（localhost:8000）</button>
+          <button type="button" class="btn btn-warning" data-value="http://localhost:8001/api">模拟跨域远端（localhost:8001）</button>
         </li>
         <li>
-          <button type="button" class="btn btn-default">模拟跨域远端（localhost:8001）</button>
-        </li>
-      </ul>
-      <div class="key">Method</div>
-      <ul class="value-list clearfix">
-        <li>
-          <button type="button" class="btn btn-default">GET</button><span class="badge badge-success">Simple</span></li>
-        <li>
-          <button type="button" class="btn btn-default">POST</button><span class="badge badge-success">Simple</span></li>
-        <li>
-          <button type="button" class="btn btn-default">HEAD</button><span class="badge badge-success">Simple</span></li>
-        <li>
-          <button type="button" class="btn btn-default">TRACE</button>
+          <button type="button" class="btn btn-default" data-value="http://localhost:8001/api-cors">远端 + Access-Control-Allow-Origin</button>
         </li>
         <li>
-          <button type="button" class="btn btn-default">PUT</button>
+          <button type="button" class="btn btn-default" data-value="http://localhost:8001/api-cors-method">远端 + Access-Control-Allow-Methods</button>
         </li>
         <li>
-          <button type="button" class="btn btn-default">DELETE</button>
+          <button type="button" class="btn btn-default" data-value="http://localhost:8001/api-cors-header">远端 + Access-Control-Allow-Headers</button>
         </li>
         <li>
-          <button type="button" class="btn btn-default">OPTIONS</button>
+          <button type="button" class="btn btn-default" data-value="http://localhost:8001/api-cors-custom-header">远端 + Access-Control-Allow-Headers:Hankonline</button>
         </li>
         <li>
-          <button type="button" class="btn btn-default">CONNECT</button>
+          <button type="button" class="btn btn-default" data-value="http://localhost:8000/api">模拟非跨域本地（localhost:8000）</button>
         </li>
       </ul>
-      <div class="key">Content-Type</div>
-      <ul class="value-list clearfix">
+      <div class="key">
+        <h4>Method</h4></div>
+      <ul class="value-list clearfix j_method">
         <li>
-          <button type="button" class="btn btn-default">text/plain</button><span class="badge badge-success">Simple</span></li>
+          <button type="button" class="btn btn-warning" data-value="GET">GET</button><span class="badge badge-success">Simple</span></li>
         <li>
-          <button type="button" class="btn btn-default">application/x-www-form-urlencoded</button><span class="badge badge-success">Simple</span></li>
+          <button type="button" class="btn btn-default" data-value="POST">POST</button><span class="badge badge-success">Simple</span></li>
         <li>
-          <button type="button" class="btn btn-default">multipart/form-data</button><span class="badge badge-success">Simple</span></li>
+          <button type="button" class="btn btn-default" data-value="HEAD">HEAD</button><span class="badge badge-success">Simple</span></li>
         <li>
-          <button type="button" class="btn btn-default">text/html</button>
+          <button type="button" class="btn btn-default" data-value="TRACE">TRACE</button>
         </li>
         <li>
-          <button type="button" class="btn btn-default">text/xml</button>
+          <button type="button" class="btn btn-default" data-value="PUT">PUT</button>
         </li>
         <li>
-          <button type="button" class="btn btn-default">image/gif</button>
+          <button type="button" class="btn btn-default" data-value="DELETE">DELETE</button>
         </li>
         <li>
-          <button type="button" class="btn btn-default">image/jpeg</button>
+          <button type="button" class="btn btn-default" data-value="OPTIONS">OPTIONS</button>
         </li>
         <li>
-          <button type="button" class="btn btn-default">application/xhtml+xml</button>
-        </li>
-        <li>
-          <button type="button" class="btn btn-default">application/xml</button>
-        </li>
-        <li>
-          <button type="button" class="btn btn-default">application/atom+xml</button>
-        </li>
-        <li>
-          <button type="button" class="btn btn-default">application/json</button>
-        </li>
-        <li>
-          <button type="button" class="btn btn-default">application/pdf</button>
-        </li>
-        <li>
-          <button type="button" class="btn btn-default">application/msword</button>
-        </li>
-        <li>
-          <button type="button" class="btn btn-default">application/octet-stream</button>
+          <button type="button" class="btn btn-default" data-value="CONNECT">CONNECT</button>
         </li>
       </ul>
+      <div class="key">
+        <h4>Content-Type</h4></div>
+      <ul class="value-list clearfix j_content">
+        <li>
+          <button type="button" class="btn btn-warning" data-value="text/plain">text/plain</button><span class="badge badge-success">Simple</span></li>
+        <li>
+          <button type="button" class="btn btn-default" data-value="application/x-www-form-urlencoded">application/x-www-form-urlencoded</button><span class="badge badge-success">Simple</span></li>
+        <li>
+          <button type="button" class="btn btn-default" data-value="multipart/form">multipart/form-data</button><span class="badge badge-success">Simple</span></li>
+        <li>
+          <button type="button" class="btn btn-default" data-value="text/html">text/html</button>
+        </li>
+        <li>
+          <button type="button" class="btn btn-default" data-value="application/json">application/json</button>
+        </li>
+        <li>
+          <button type="button" class="btn btn-default" data-value="text/xml">text/xml</button>
+        </li>
+        <li>
+          <button type="button" class="btn btn-default" data-value="image/gif">image/gif</button>
+        </li>
+        <li>
+          <button type="button" class="btn btn-default" data-value="image/jpeg">image/jpeg</button>
+        </li>
+        <li>
+          <button type="button" class="btn btn-default" data-value="application/xhtml+xml">application/xhtml+xml</button>
+        </li>
+        <li>
+          <button type="button" class="btn btn-default" data-value="application/xml">application/xml</button>
+        </li>
+        <li>
+          <button type="button" class="btn btn-default" data-value="application/atom">application/atom+xml</button>
+        </li>
+        <li>
+          <button type="button" class="btn btn-default" data-value="application/pdf">application/pdf</button>
+        </li>
+      </ul>
+      <div class="key">
+        <h4>Custom Header</h4></div>
+      <ul class="value-list clearfix j_custom">
+        <li>
+          <button type="button" class="btn btn-warning" data-value="">None</button>
+        </li>
+        <li>
+          <button type="button" class="btn btn-default" data-value="Hankonline">Hankonline</button>
+        </li>
+      </ul>
+      <div class="action">
+        <button type="button" class="btn btn-success btn-lg j_send">Send</button>
+      </div>
     </section>
-    <section class="demo"></section>
+    <section class="demo clearfix">
+      <div class="data-show-wrap">
+        <div class="data-show">
+          <h5>Request Header</h5>
+          <p class="j_request"></p>
+        </div>
+        <div class="data-show">
+          <h5>Response Header</h5>
+          <p class="j_response"></p>
+        </div>
+      </div>
+    </section>
   </section>
   <script>
-  $(function sendSameOriginRequest(argument) {
-    sendRequestToRemote()
-      .then(function(res) {
-        showRespones(res);
-      })
+  var config = {
+    url: 'http://localhost:8001/api',
+    method: 'GET',
+    contentType: '',
+    headers: null
+  }
+
+  $('.j_url').on('click', 'button', function(event) {
+    $('.j_url').find('.btn-warning').removeClass('btn-warning').addClass('btn-default');
+    $(event.target).addClass('btn-warning');
+    config.url = $(event.target).attr('data-value');
+  })
+
+  $('.j_method').on('click', 'button', function(event) {
+    $('.j_method').find('.btn-warning').removeClass('btn-warning').addClass('btn-default');
+    $(event.target).addClass('btn-warning');
+    config.method = $(event.target).attr('data-value');
+  })
+
+  $('.j_content').on('click', 'button', function(event) {
+    $('.j_content').find('.btn-warning').removeClass('btn-warning').addClass('btn-default');
+    $(event.target).addClass('btn-warning');
+    config.contentType = $(event.target).attr('data-value');
+  })
+
+  $('.j_custom').on('click', 'button', function(event) {
+    var customHeader = $(event.target).attr('data-value');
+    $('.j_custom').find('.btn-warning').removeClass('btn-warning').addClass('btn-default');
+    $(event.target).addClass('btn-warning');
+    config.headers = {};
+    config.headers[customHeader] = customHeader
+  })
+
+  $('.j_send').click(function(event) {
+    sendRequestToRemote();
   });
 
   function sendRequestToRemote() {
-    return $.ajax({
-      method: "GET",
-      url: 'http://localhost:8001/api-cors',
-      contentType: 'application/xml; charset=UTF-8',
-      headers: {
-        hank: 'hank'
+    $.ajax({
+      url: config.url,
+      method: config.method,
+      contentType: config.contentType,
+      headers: config.headers,
+      success: function(res, status, xhr) {
+      	res = res === undefined ? '' : res;
+        $('.j_request').html(res);
+        $('.j_response').html(xhr.getAllResponseHeaders());
+      },
+      fail: function(res, status, xhr) {
+      	res = res === undefine ? '' : res;
+        $('.j_request').text(res);
+        $('.j_response').text(xhr.getAllResponseHeaders());
+      },
+      error: function(e) {
+        $('.j_request').html(e.statusText);
+        $('.j_response').html('');
       }
     })
   }
 
   function showRespones(res) {
-  	console.log(res);
+    console.log(res);
+    console.log(res);
+    console.log('Status === ', status);
+    console.log('Response === ', xhr.getAllResponseHeaders());
   }
   </script>
 </body>
